@@ -1,10 +1,12 @@
 {
-  "status": "local-candidate",
+  "status": "pending-public-activation",
   "repository_url": "https://github.com/kurumi0715555/nobatasu-timer",
-  "security_contact": "",
-  "project_rights_confirmed": false,
-  "brand_terms_approved": false,
-  "release_qa_approved": false,
+  "security_contact": "https://github.com/kurumi0715555/nobatasu-timer/security/advisories",
+  "security_reporting_provider": "github-private-vulnerability-reporting",
+  "security_reporting_verified": false,
+  "project_rights_confirmed": true,
+  "brand_terms_approved": true,
+  "release_qa_approved": true,
   "public_operations_approved": false,
-  "source_distribution_verified": false
+  "source_distribution_verified": true
 }

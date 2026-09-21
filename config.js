@@ -4,7 +4,7 @@ window.TIMER_CONFIG = {
     displayName: '教室用タイマー',
     operatorName: '',
     sourceUrl: './source/timer-source.zip',
-    revision: 'src-95ba3d79e9f6a2ab',
+    revision: 'src-045de73f13448433',
     helpUrl: '',
     privacyUrl: '',
     logoUrl: ''

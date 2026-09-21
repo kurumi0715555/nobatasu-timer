@@ -115,10 +115,13 @@ class PackagingTests(unittest.TestCase):
         path.write_text(json.dumps(decisions))
         build.release_gate(self.root)
         for key in build.APPROVALS:
-            changed = {**decisions, key: 'true'}
-            path.write_text(json.dumps(changed))
-            with self.subTest(key=key), self.assertRaisesRegex(ValueError, 'Release gate pending'):
-                build.release_gate(self.root)
+            for value in ('missing', False, 'true'):
+                changed = {**decisions, key: value}
+                if value == 'missing':
+                    del changed[key]
+                path.write_text(json.dumps(changed))
+                with self.subTest(key=key, value=value), self.assertRaisesRegex(ValueError, key):
+                    build.release_gate(self.root)
         path.write_text(json.dumps({**decisions, 'security_contact': '未確定'}))
         with self.assertRaisesRegex(ValueError, 'security_contact'):
             build.release_gate(self.root)
