@@ -1,10 +1,10 @@
 {
   "status": "local-candidate",
-  "repository_url": "",
+  "repository_url": "https://github.com/kurumi0715555/nobatasu-timer",
   "security_contact": "",
   "project_rights_confirmed": false,
   "brand_terms_approved": false,
-  "deployment_handoff_verified": false,
   "release_qa_approved": false,
-  "public_operations_approved": false
+  "public_operations_approved": false,
+  "source_distribution_verified": false
 }

@@ -1,0 +1,25 @@
+/* Timer固有のソース導線。共通同期対象のCSSを変更せず全モードに表示する。 */
+.source-access {
+    position: fixed;
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+    z-index: 9998;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-pill);
+    color: var(--primary-color-deep);
+    background: var(--surface-color);
+    box-shadow: var(--shadow-medium);
+    font-size: var(--fs-sub);
+    font-weight: var(--fw-semibold);
+    text-decoration: underline;
+}
+.source-access[hidden], body.fullscreen-mode .source-access-normal { display: none; }
+.source-access:focus-visible { outline: 3px solid var(--warning-color); outline-offset: 3px; }
+.fullscreen-controls button, .exit-fullscreen-btn { min-width: 44px; min-height: 44px; }
+@media print { .source-access { position: static; box-shadow: none; } }

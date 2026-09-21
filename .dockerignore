@@ -1,4 +1,4 @@
-# Explicit build context; keep aligned with scripts/package-manifest.json.
+# Explicit source allowlist.
 **
 !.dockerignore
 !.github/workflows/check.yml
@@ -34,10 +34,12 @@
 !common/vendor/fontawesome/webfonts/fa-solid-900.ttf
 !common/vendor/fontawesome/webfonts/fa-solid-900.woff2
 !config.js
+!css/source-access.css
 !css/standalone.css
 !css/timer.css
 !docker-compose.yml
 !index.html
+!js/source-access.js
 !js/timer.js
 !package-lock.json
 !package.json
@@ -46,9 +48,7 @@
 !scripts/build.py
 !scripts/package-manifest.json
 !scripts/test_build.py
-!scripts/test_deploy_boundary.py
 !tests/browser.mjs
-# Never transmit secret files, even if an allowlist is edited.
 **/.env
 **/.env.*
 **/.git

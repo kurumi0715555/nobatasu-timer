@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 FORMAT = 'timer-distribution-v1'
 SKIP_ROOT = {'.git', 'build', 'node_modules', 'test-results', 'playwright-report'}
 APPROVALS = ('project_rights_confirmed', 'brand_terms_approved',
-             'deployment_handoff_verified', 'release_qa_approved', 'public_operations_approved')
+             'source_distribution_verified', 'release_qa_approved', 'public_operations_approved')
 
 
 def safe_name(name):

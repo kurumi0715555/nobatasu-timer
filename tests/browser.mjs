@@ -169,11 +169,12 @@ try {
         assert.equal(await page.locator('.source-access-normal').getAttribute('href'), new URL('fork/source.zip', baseUrl).href);
         assert.equal(await page.locator('.instructions a').getAttribute('href'), new URL('help.html', baseUrl).href);
     }, null, { displayName: '<img src=x> 独自タイマー', operatorName: 'テスト運営', sourceUrl: './fork/source.zip', revision: 'fork-test', helpUrl: './help.html', privacyUrl: './privacy.html' });
-    await scenario('危険URLは拒否・ソース既定値へ復帰', async page => {
+    await scenario('危険URLは拒否・ソース導線を非表示', async page => {
         assert.equal(await page.locator('header img').count(), 0);
         assert.equal(await page.locator('.instructions a').count(), 0);
         assert.equal(await page.locator('footer a').count(), 0);
-        assert.ok((await page.locator('.source-access-normal').getAttribute('href')).endsWith('/source/timer-source.zip'));
+        assert.equal(await page.locator('[data-source-link][href]').count(), 0);
+        assert.equal(await page.locator('[data-source-link]:visible').count(), 0);
     }, null, { sourceUrl: 'javascript:alert(1)', helpUrl: 'data:text/html,bad', logoUrl: '//outside.invalid/logo.png', privacyUrl: 'file:///etc/passwd' });
 } finally { await browser.close(); }
 if (failures.length) throw new Error(failures.join('\n'));

@@ -26,9 +26,11 @@
     "common/vendor/fontawesome/webfonts/fa-solid-900.ttf",
     "common/vendor/fontawesome/webfonts/fa-solid-900.woff2",
     "config.js",
+    "css/source-access.css",
     "css/standalone.css",
     "css/timer.css",
     "index.html",
+    "js/source-access.js",
     "js/timer.js"
   ],
   "source": [
@@ -66,10 +68,12 @@
     "common/vendor/fontawesome/webfonts/fa-solid-900.ttf",
     "common/vendor/fontawesome/webfonts/fa-solid-900.woff2",
     "config.js",
+    "css/source-access.css",
     "css/standalone.css",
     "css/timer.css",
     "docker-compose.yml",
     "index.html",
+    "js/source-access.js",
     "js/timer.js",
     "package-lock.json",
     "package.json",
@@ -78,7 +82,6 @@
     "scripts/build.py",
     "scripts/package-manifest.json",
     "scripts/test_build.py",
-    "scripts/test_deploy_boundary.py",
     "tests/browser.mjs"
   ]
 }
