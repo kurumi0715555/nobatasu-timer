@@ -30,7 +30,7 @@ Actions自身の実行環境はNode24です。ブラウザテスト用Node.jsは
 
 CIの成功と公開ゲートは別です。候補の未確定事項は `release-readiness.json` と公開前レビューで管理し、公開・push・本番配信はそれぞれ承認後に実施します。
 
-公開条件の記録確認は `python3 scripts/build.py --check --release` で行います。`status` が `ready-for-publication`、6つの確認項目がbooleanの `true`、実在する公開先と非公開脆弱性窓口が記録されたことをレビューしてから実行します。`security_reporting_verified`は、窓口を選んだだけではtrueにせず、実際の有効化・導線・通知設定を確認して記録します。この検査は形式と記録を確認するもので、窓口の実在性や権利・承認の事実を自動検証しません。コマンドが成功しても外部操作は行いません。
+公開条件の記録確認は `python3 scripts/build.py --check --release` で行います。`status` が `ready-for-publication`、6つの確認項目がbooleanの `true`、実在する公開先と非公開脆弱性窓口が記録されたことをレビューしてから実行します。`security_reporting_verified`は、窓口を選んだだけではtrueにせず、実際の有効化と報告導線を確認して記録します。通知設定の確認状況は`security_notification_settings_verified`へ別に記録します。この検査は形式と記録を確認するもので、窓口の実在性や権利・承認の事実を自動検証しません。コマンドが成功しても外部操作は行いません。
 
 ## 正本と配布の関係
 
