@@ -1,0 +1,48 @@
+name: Verify Timer candidate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Official release SHA references are recorded in scripts/README.md.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Verify source allowlist and package
+        run: python3 scripts/build.py
+      - name: Verify packaging boundaries
+        run: python3 scripts/test_build.py
+      - name: Rehearse deployment isolation with local fixtures
+        run: python3 scripts/test_deploy_boundary.py
+      - name: Install test dependencies
+        run: npm ci --ignore-scripts
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Validate Compose and start standalone image
+        run: |
+          docker compose config --quiet
+          docker compose up --build --wait
+      - name: Browser regression against standalone Apache
+        run: npm test
+        env:
+          BASE_URL: http://127.0.0.1:8091
+      - name: Stop local service
+        if: always()
+        run: docker compose down
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: timer-local-candidate
+          path: build/
+          if-no-files-found: error
+          retention-days: 7

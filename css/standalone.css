@@ -1,0 +1,28 @@
+/* 単独版の外枠。共通同期ファイルには上書きを加えない。 */
+.source-access {
+    position: fixed;
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+    z-index: 9998;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-pill);
+    color: var(--primary-color-deep);
+    background: var(--surface-color);
+    box-shadow: var(--shadow-medium);
+    font-size: var(--fs-sub);
+    font-weight: var(--fw-semibold);
+    text-decoration: underline;
+}
+body.fullscreen-mode .source-access-normal { display: none; }
+.source-access:focus-visible, .standalone-link:focus-visible { outline: 3px solid var(--warning-color); outline-offset: 3px; }
+.standalone-link { display: inline-flex; align-items: center; min-height: 44px; padding: var(--spacing-sm); }
+.operator-logo { display: block; max-width: 240px; max-height: 80px; margin: 0 auto var(--spacing-md); }
+footer { padding-bottom: 80px; }
+.fullscreen-controls button, .exit-fullscreen-btn { min-width: 44px; min-height: 44px; }
+@media print { .source-access { position: static; box-shadow: none; } }

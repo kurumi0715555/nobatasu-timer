@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教室用タイマー｜授業で使える大きなタイマー</title>
+    <meta name="description" content="インストール不要で使える教室用タイマー。全画面表示・音通知・クイック設定に対応。授業やテストに最適。">
+    <script src="config.js"></script>
+    <script src="common/js/common-seo.js"></script>
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="common/css/landscape-guard.css">
+    <link rel="stylesheet" href="css/timer.css?v=20260831-1">
+    <link rel="stylesheet" href="common/vendor/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="common/vendor/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="css/standalone.css">
+</head>
+
+<body>
+    <!-- 授業モード切り替えボタン -->
+    <button id="classModeToggle" class="class-mode-toggle">
+        <i id="classModeIcon" class="fas fa-chalkboard"></i>
+        <span id="classModeText">授業モード OFF</span>
+    </button>
+
+    <div class="site-wrapper">
+        <!-- 左側広告エリア -->
+        <aside class="ad-left">
+            <!-- Ads injected by common-ads.js -->
+        </aside>
+
+        <div class="container">
+            <header>
+                <!-- Header banner will be injected by common-header.js -->
+                <h1><i class="fas fa-clock"></i> 教室用タイマー</h1>
+                <p class="subtitle">全画面表示・音通知で授業時間をスムーズに管理</p>
+            </header>
+
+            <main>
+                <!-- タイマー表示エリア -->
+                <div class="timer-display-area">
+                    <div id="timerDisplay" class="timer-display">
+                        <span class="time-part minutes">05</span>
+                        <span class="separator">:</span>
+                        <span class="time-part seconds">00</span>
+                    </div>
+                    <div id="timerStatus" class="timer-status" role="status">準備完了</div>
+                </div>
+
+                <!-- 設定エリア -->
+                <div class="settings-wrapper">
+                    <!-- クイック設定ボタン -->
+                    <div class="quick-settings">
+                        <h3><i class="fas fa-bolt"></i> クイック設定</h3>
+                        <div class="quick-buttons">
+                            <button class="quick-btn" data-seconds="30">
+                                <span>30秒</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="1">
+                                <span>1分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="3">
+                                <span>3分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="5">
+                                <span>5分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="7">
+                                <span>7分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="10">
+                                <span>10分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="15">
+                                <span>15分</span>
+                            </button>
+                            <button class="quick-btn" data-minutes="20">
+                                <span>20分</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- カスタム設定 -->
+                    <div class="custom-settings">
+                        <h3><i class="fas fa-sliders"></i> カスタム設定</h3>
+                        <div class="time-input-group">
+                            <div class="input-group">
+                                <label for="minutesInput">
+                                    <i class="fas fa-clock"></i> 分
+                                </label>
+                                <input type="number" id="minutesInput" min="0" max="99" value="5">
+                            </div>
+                            <div class="input-group">
+                                <label for="secondsInput">
+                                    <i class="fas fa-stopwatch"></i> 秒
+                                </label>
+                                <input type="number" id="secondsInput" min="0" max="59" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- コントロールボタン -->
+                <div class="control-buttons">
+                    <button id="startBtn" class="btn btn-primary btn-large">
+                        <i class="fas fa-play"></i> スタート
+                    </button>
+                    <button id="pauseBtn" class="btn btn-warning btn-large" style="display: none;">
+                        <i class="fas fa-pause"></i> 一時停止
+                    </button>
+                    <button id="resetBtn" class="btn btn-secondary btn-large">
+                        <i class="fas fa-redo"></i> リセット
+                    </button>
+                    <button id="fullscreenBtn" class="btn btn-secondary btn-large">
+                        <i class="fas fa-expand"></i> 全画面表示
+                    </button>
+                </div>
+
+                <!-- 使い方 -->
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> 使い方</h3>
+                    <ol>
+                        <li><strong>クイック設定</strong>：30秒〜20分のボタンで素早く設定</li>
+                        <li><strong>カスタム設定</strong>：分・秒を入力して自由に設定</li>
+                        <li><strong>スタート</strong>：タイマーを開始します</li>
+                        <li><strong>一時停止</strong>：タイマーを一時停止（再開も可能）</li>
+                        <li><strong>リセット</strong>：タイマーを設定時間に戻します</li>
+                        <li><strong>全画面表示</strong>：テレビやプロジェクターで見やすい大画面表示</li>
+                    </ol>
+                    <p class="note"><i class="fas fa-lightbulb"></i>
+                        <strong>ヒント</strong>：全画面表示中は、ESCキーで解除できます。時間が0になると音が鳴ります。
+                    </p>
+                </div>
+            </main>
+
+            <!-- メインとフッターの間の横長広告 -->
+            <div class="ad-horizontal">
+                <div class="ad-label">広告</div>
+                <div class="ad-horizontal-content">
+                    <i class="fas fa-rectangle-ad"></i>
+                    <p>728×90 レクタングル（大）バナー広告</p>
+                </div>
+            </div>
+
+            <footer>
+                <!-- Footer will be injected by common-footer.js -->
+            </footer>
+        </div>
+
+        <!-- 右側広告エリア -->
+        <aside class="ad-right">
+            <!-- Ads injected by common-ads.js -->
+        </aside>
+    </div>
+
+    <a class="source-access source-access-normal" data-source-link href="./source/timer-source.zip">ソースコード</a>
+
+    <!-- 全画面表示用のオーバーレイ -->
+    <div id="fullscreenOverlay" class="fullscreen-overlay" role="dialog" aria-modal="true" aria-label="タイマー全画面表示">
+        <div class="fullscreen-timer">
+            <div id="fullscreenDisplay" class="fullscreen-display">
+                <span class="fs-minutes">05</span>
+                <span class="fs-separator">:</span>
+                <span class="fs-seconds">00</span>
+            </div>
+            <div id="fullscreenStatus" class="fullscreen-status">準備完了</div>
+
+            <!-- 全画面表示中のコントロールボタン -->
+            <div class="fullscreen-controls">
+                <button id="fsStartBtn" class="fs-btn fs-btn-start">
+                    <i class="fas fa-play"></i> スタート
+                </button>
+                <button id="fsPauseBtn" class="fs-btn fs-btn-pause" style="display: none;">
+                    <i class="fas fa-pause"></i> 一時停止
+                </button>
+                <button id="fsResetBtn" class="fs-btn fs-btn-reset">
+                    <i class="fas fa-redo"></i> リセット
+                </button>
+            </div>
+        </div>
+        <a class="source-access" data-source-link href="./source/timer-source.zip">ソースコード</a>
+        <button id="exitFullscreen" class="exit-fullscreen-btn">
+            <i class="fas fa-times"></i> 全画面を解除
+        </button>
+    </div>
+
+    <script src="common/js/class-mode.js"></script>
+    <script src="common/js/common-header.js"></script>
+    <script src="common/js/common-howto-link.js"></script>
+    <script src="common/js/common-ads.js"></script>
+    <script src="common/js/common-footer.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="common/js/landscape-guard.js"></script>
+</body>
+
+</html>

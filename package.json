@@ -1,0 +1,13 @@
+{
+  "name": "classroom-timer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ブラウザで動く教室用タイマーの独立配布候補",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "test": "node tests/browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

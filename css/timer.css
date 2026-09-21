@@ -1,0 +1,495 @@
+/* 教室用タイマー専用スタイル */
+
+/* タイマー表示エリア */
+.timer-display-area {
+    background: var(--primary-color);
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-xlarge);
+    margin-bottom: var(--spacing-md);
+}
+
+.timer-display {
+    /* 公式 Type Scale `--fs-timer: 8rem` を使用（旧: 8em の親依存値） */
+    font-size: var(--fs-timer);
+    font-weight: var(--fw-black);
+    color: var(--white);
+    /* タイマー視認性のため意図的に Arial Black 系を残す */
+    font-family: 'Arial Black', 'Arial Bold', sans-serif;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.3);
+    text-stroke: 3px rgba(255, 255, 255, 0.3);
+}
+
+.timer-display .time-part {
+    display: inline-block;
+    min-width: 2ch;
+}
+
+.timer-display .separator {
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0.3; }
+}
+
+.timer-status {
+    font-size: 1.5em;
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* タイマーが動作中 */
+.timer-display.running {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* タイマー終了時：公式 danger 色に統合（視認性は同等） */
+.timer-display.finished {
+    animation: flash 0.5s ease-in-out infinite;
+    color: var(--danger-color);
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.timer-display-area.finished {
+    background: var(--danger-color);
+}
+
+/* 設定エリア全体のレイアウト */
+.settings-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* クイック設定 */
+.quick-settings {
+    background: var(--gray-lighter);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-large);
+}
+
+.quick-settings h3 {
+    font-size: 1.3em;
+    color: var(--gray-darkest);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.quick-settings h3 i {
+    color: var(--primary-color);
+}
+
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.quick-btn {
+    padding: 8px 5px;
+    min-height: 44px;
+    background: var(--white);
+    border: 2px solid var(--gray);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.0em;
+    font-weight: 600;
+}
+
+.quick-btn i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.quick-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.quick-btn:hover i {
+    color: var(--white);
+}
+
+.quick-btn:active {
+    transform: translateY(-1px);
+}
+
+/* カスタム設定 */
+.custom-settings {
+    background: var(--gray-lighter);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-large);
+}
+
+.custom-settings h3 {
+    font-size: 1.3em;
+    color: var(--gray-darkest);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.custom-settings h3 i {
+    color: var(--primary-color);
+}
+
+.time-input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--gray-darkest);
+    margin-bottom: var(--spacing-sm);
+}
+
+.input-group label i {
+    color: var(--primary-color);
+}
+
+.input-group input[type="number"] {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1.3em;
+    border: 2px solid var(--gray);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.input-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--focus-ring);
+}
+
+.input-group input[type="number"]:disabled {
+    background: var(--gray-lighter);
+    color: var(--gray-dark);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* コントロールボタン */
+.control-buttons {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    justify-content: center;
+}
+
+.btn-large {
+    font-size: 1.3em;
+    padding: var(--spacing-lg) var(--spacing-xxl);
+    min-width: 200px;
+}
+
+/* 全画面表示セクション */
+.fullscreen-section {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--gray-light);
+    border-radius: var(--border-radius-large);
+}
+
+.fullscreen-section .btn {
+    font-size: 1.2em;
+    padding: var(--spacing-lg) var(--spacing-xxl);
+}
+
+.fullscreen-section .hint {
+    margin-top: var(--spacing-md);
+    color: var(--gray-darker);
+    font-size: 0.95em;
+}
+
+/* 使い方は common/css/components.css で定義 */
+
+/* 全画面表示オーバーレイ */
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--primary-color);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fullscreen-overlay.active {
+    display: flex;
+}
+
+.fullscreen-timer {
+    text-align: center;
+}
+
+.fullscreen-display {
+    font-size: 20vw;
+    font-weight: 900;
+    color: var(--white);
+    font-family: 'Arial Black', 'Arial Bold', sans-serif;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 4px rgba(255, 255, 255, 0.3);
+    text-stroke: 4px rgba(255, 255, 255, 0.3);
+}
+
+.fullscreen-status {
+    font-size: 4vw;
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: var(--spacing-xl);
+}
+
+.fullscreen-controls {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    margin-top: 5vh;
+}
+
+.fs-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: 3px solid var(--white);
+    padding: 2vh 4vw;
+    border-radius: var(--border-radius-pill);
+    font-size: 2vw;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 1vw;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.fs-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.fs-btn:active {
+    transform: translateY(-2px);
+}
+
+.fs-btn i {
+    font-size: 1.2em;
+}
+
+.exit-fullscreen-btn {
+    position: absolute;
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-pill);
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+}
+
+.exit-fullscreen-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fullscreen-display.running {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.fullscreen-display.finished {
+    animation: flash 0.5s ease-in-out infinite;
+    color: var(--danger-color);
+}
+
+.fullscreen-overlay.finished {
+    background: var(--danger-color);
+}
+
+/* 13インチPC等の低い画面では、開始操作までを最初の画面に収める。 */
+@media screen and (min-width: 769px) and (max-height: 800px) {
+    .timer-display-area {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .timer-display {
+        margin-bottom: var(--spacing-xs);
+        font-size: clamp(5.5rem, 13vh, 6.5rem);
+        line-height: 1;
+    }
+
+    .timer-status {
+        font-size: 1.15em;
+    }
+
+    .settings-wrapper {
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .quick-settings h3,
+    .custom-settings h3 {
+        margin-bottom: var(--spacing-sm);
+        font-size: 1.1em;
+    }
+
+    .quick-buttons {
+        gap: var(--spacing-sm);
+    }
+
+    .input-group label {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .control-buttons {
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .btn-large {
+        flex: 1;
+        min-width: 0;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timer-display .separator,
+    .timer-display.running,
+    .timer-display.finished,
+    .fullscreen-display.running,
+    .fullscreen-display.finished {
+        animation: none;
+    }
+
+    .quick-btn,
+    .fs-btn,
+    .exit-fullscreen-btn {
+        transition: none;
+    }
+
+    .quick-btn:hover,
+    .fs-btn:hover,
+    .fs-btn:active,
+    .exit-fullscreen-btn:hover {
+        transform: none;
+    }
+}
+
+/* レスポンシブデザイン */
+/* 1024px以上（iPad横向き含む）: 縦並びレイアウトを維持しつつサイズを最適化 */
+
+
+@media screen and (max-width: 768px) {
+    .timer-display {
+        font-size: 4em;
+    }
+
+    .timer-status {
+        font-size: 1em;
+    }
+
+    .settings-wrapper {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .quick-buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .control-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn-large {
+        flex: 1 1 calc(50% - 8px);
+        padding: 10px;
+        font-size: 1.1em;
+        min-width: auto;
+    }
+
+    .fullscreen-display {
+        font-size: 25vw;
+    }
+
+    .fullscreen-status {
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .quick-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timer-display {
+        font-size: 3.5em;
+    }
+
+    .quick-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .time-input-group {
+        grid-template-columns: 1fr;
+    }
+}
