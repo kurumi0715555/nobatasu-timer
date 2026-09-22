@@ -70,7 +70,7 @@ Spaceでも開始・一時停止できます。音の再生にはブラウザで
 
 配信対象は `build/site/` の内容です。repo全体を公開ディレクトリへコピーしません。rootの `/` と任意のサブパスで配信できる相対参照を使用しています。
 
-## 開発とテスト
+## 開発・テスト
 
 実行にNode.jsは不要です。ブラウザテストだけで使います。
 
@@ -78,7 +78,10 @@ Spaceでも開始・一時停止できます。音の再生にはブラウザで
 npm ci --ignore-scripts
 npx playwright install chromium
 python3 scripts/build.py
+python3 scripts/test_build.py
 ```
+
+ビルド検査は直接 `python3 scripts/test_build.py` で実行します。生成ZIPと配布ファイル構成を検査するもので、アプリの全操作を機能検証するものではありません。
 
 別ターミナルで上記HTTPサーバーを起動し、`BASE_URL=http://127.0.0.1:8091/ npm test` を実行します。詳細は [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
