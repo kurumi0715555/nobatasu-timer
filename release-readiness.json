@@ -1,7 +1,7 @@
 {
   "status": "ready-for-publication",
-  "repository_url": "https://github.com/kurumi0715555/nobatasu-timer",
-  "security_contact": "https://github.com/kurumi0715555/nobatasu-timer/security/advisories",
+  "repository_url": "https://github.com/kurumi0715555/timer",
+  "security_contact": "https://github.com/kurumi0715555/timer/security/advisories",
   "security_reporting_provider": "github-private-vulnerability-reporting",
   "security_reporting_verified": true,
   "security_notification_settings_verified": false,

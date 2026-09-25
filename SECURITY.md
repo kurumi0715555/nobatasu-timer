@@ -2,7 +2,7 @@
 
 脆弱性の報告には、GitHubのPrivate vulnerability reportingを使用します。
 
-[Security Advisories](https://github.com/kurumi0715555/nobatasu-timer/security/advisories)で **Report a vulnerability** が表示されていることを確認し、非公開フォームから報告してください。この機能の利用にはGitHubへのログインが必要です。
+[Security Advisories](https://github.com/kurumi0715555/timer/security/advisories)で **Report a vulnerability** が表示されていることを確認し、非公開フォームから報告してください。この機能の利用にはGitHubへのログインが必要です。
 
 Privateの準備段階や機能が未有効の場合、フォームは利用できません。ボタンが表示されない場合も、未修正の詳細を公開Issueへ投稿しないでください。`release-readiness.json`の`security_reporting_verified`は、機能の有効化と報告導線を確認した記録です。通知設定は`security_notification_settings_verified`へ別に記録し、実際のメール配送を確認した意味にはしません。
 
